@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advocacia</title>
+    <style>
+        /* Estilo Geral */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ddd;
+    background-color: #111;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li ul.dropdown {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+}
+
+nav ul li:hover ul.dropdown {
+    display: block;
+}
+
+.btn {
+    background-color: #d4af37;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c29c2c;
+}
+
+/* Efeitos parallax no banner */
+.banner-parallax {
+    height: 400px;
+    background-image: url('banner.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 50px;
+}
+
+/* Formulário */
+.contact-section {
+    padding: 50px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #d4af37;
+}
+
+button {
+    padding: 15px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #ccc;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Serviços</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Cível</a></li>
+                        <li><a href="#">Trabalhista</a></li>
+                        <li><a href="#">Penal</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- Banner com Parallax -->
+        <section class="banner-parallax">
+            <div class="text-container">
+                <h1>Defesa com Excelência</h1>
+                <p>Advogados especialistas em diversas áreas</p>
+                <button class="btn">Saiba Mais</button>
+            </div>
+        </section>
+
+        <!-- API de Mapa -->
+        <section class="map-container">
+            <h2>Nossa Localização</h2>
+            <div id="globe"></div> <!-- Globo interativo aqui -->
+        </section>
+
+        <!-- Sessão com Texto e Imagens -->
+        <article class="info-section">
+            <div class="info-text">
+                <h2>Soluções Jurídicas Personalizadas</h2>
+                <p>Nosso escritório oferece atendimento especializado...</p>
+                <button class="btn-whatsapp">Fale Conosco via WhatsApp</button>
+            </div>
+            <div class="image-gallery">
+                <img src="img1.jpg" alt="Imagem 1">
+                <img src="img2.jpg" alt="Imagem 2">
+                <img src="img3.jpg" alt="Imagem 3">
+            </div>
+        </article>
+
+        <!-- Notícias -->
+        <aside class="news-section">
+            <h3>Últimas Defesas</h3>
+            <p>Acompanhe os casos recentes em que atuamos...</p>
+            <!-- Inserir notícias aqui -->
+        </aside>
+
+        <!-- Excelência -->
+        <section class="excellence-section">
+            <h2>Excelência em Atendimento</h2>
+            <p>Nosso compromisso é oferecer um serviço de qualidade...</p>
+        </section>
+
+        <!-- Testemunhos com Comentários do Google -->
+        <section class="testimonials">
+            <h2>O que nossos clientes dizem</h2>
+            <div id="google-reviews"></div> <!-- API de Comentários do Google -->
+        </section>
+
+        <!-- Formulário de Contato -->
+        <section class="contact-section">
+            <h2>Contato</h2>
+            <form id="contact-form" action="https://formspree.io/f/{your-form-id}" method="POST">
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <small id="email-error"></small>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-column">
+            <h4>Escritório</h4>
+            <p>Endereço: Rua X, Brasília, DF</p>
+        </div>
+        <div class="footer-column">
+            <h4>Contato</h4>
+            <p>Email: contato@advocacia.com</p>
+            <p>Telefone: (61) 9999-9999</p>
+        </div>
+    </footer>
+
+    <!-- Botão de troca de tema -->
+    <button id="theme-toggle">Alterar Tema</button>
+    <script>
+        // Troca de tema
+const themeToggleBtn = document.getElementById('theme-toggle');
+themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    document.body.classList.toggle('dark-theme');
+});
+
+// Validação de e-mail com Formspree
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+    const email = document.getElementById('email').value;
+    const emailError = document.getElementById('email-error');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        e.preventDefault();
+        emailError.textContent = 'Por favor, insira um e-mail válido.';
+        emailError.style.color = 'red';
+    } else {
+        emailError.textContent = '';
+    }
+});
+    </script>
+</body>
+</html>
